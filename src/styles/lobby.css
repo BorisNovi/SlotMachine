@@ -1,0 +1,75 @@
+.lobby {
+  display: flex;
+  flex-direction: column;
+}
+
+.lobby-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: linear-gradient(to bottom, #8000ff 0%, #9e00ff 50%, #61009c 100%);
+  width: 100vw;
+  height: 54px;
+  border-bottom: 2px solid #913bff;
+}
+
+.heading-stars {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #370063;
+  border-radius: 19px;
+  height: 36px;
+  width: 240px;
+  border-bottom: 1px solid #ffb800;
+  box-shadow: inset 0 3px 4px #00000077;
+}
+
+.star-img {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 100px;
+  top: 1px;
+}
+
+.score-stars--count {
+  letter-spacing: 2px;
+  font-size: 24px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, var(--upper-violet-gradient-color), var(--bottom-violet-gradient-color));
+}
+
+.score-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #370063;
+  border-radius: 19px;
+  height: 36px;
+  width: 240px;
+  border-bottom: 1px solid #ffb800;
+  box-shadow: inset 0 3px 4px #00000077;
+}
+
+.coins-img {
+  width: 39px;
+  height: 27px;
+  position: absolute;
+  left: 462px;
+  top: 13px;
+}
+
+.score-coins--count {
+  letter-spacing: 2px;
+  font-size: 24px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, var(--upper-gold-gradient-color), var(--bottom-gold-gradient-color));
+}
