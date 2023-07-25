@@ -6,6 +6,7 @@
   <title>Document</title>
 </head>
 <body>
+
   <section class="main" hidden>
     <h2 class="privacy-heading">Privacy Policy</h2>
     <div class="privacy-inner">
@@ -52,10 +53,13 @@
         Fair Information Practices<br>
         The Fair Information Practices Principles form the backbone of privacy law in the United States, and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information.<br>
       </p>
-      <button class="privacy-accept-btn"><span>&nbsp;Accept&nbsp;</span></button>
+      <button class="privacy-accept-btn">
+        <img src="controls/accept-btn.svg" alt="accept-btn">
+      </button>
     </div>
   </section>
-  <section class="lobby">
+
+  <section class="lobby" hidden>
     <div class="lobby-heading">
       <div class="heading-stars">
         <img class="star-img" src="star.svg" alt="star">
@@ -107,6 +111,57 @@
       </div>
     </div>
   </section>
+
+  <section class="royal-coins">
+    <div class="royal-coins-heading">
+      <button class="game-btn back-btn"><img src="arrows/leftArr.svg" alt="left"></button>
+      <div class="heading-stars">
+        <img class="star-img" src="star.svg" alt="star">
+        <div class="score-stars--count">
+          <span class="stars-have">0000</span><span>/</span><span class="stars-max">0000</span>
+        </div>
+      </div>
+      <div class="heading-money">
+        <div class="score-container">
+          <img class="coins-img" src="coins.svg" alt="coins">
+          <div class="score-coins--count">
+            <span>000000000</span>
+          </div>
+        </div>
+      </div>
+      <div class="game-btn-paceholder"></div>
+    </div>
+
+    <div class="royal-coins-bottom">
+
+      <div class="bet-container">
+        <button class="game-btn minus-btn"><img src="controls/minus.svg" alt="left"></button>
+        <div class="bet-field">
+          <span>50000</span>
+        </div>
+        <button class="game-btn plus-btn"><img src="controls/plus.svg" alt="left"></button>
+      </div>
+
+      <div class="win-container">
+        <img src="win-text.svg" alt="win-text">
+        <span>10000000</span>
+      </div>
+
+      <div class="controls-container">
+        <button class="auto-btn">
+          <img src="controls/auto-btn.svg" alt="auto-btn">
+        </button>
+        <button class="spin-btn">
+          <img src="controls/spin-btn.svg" alt="spin-btn">
+        </button>
+
+      </div>
+      
+    </div>
+    <div class="game-content">
+    </div>
+  </section>
+
   <img src="lobby-bg.png" alt="background-image" class="bg-img">
 </body>
 </html>

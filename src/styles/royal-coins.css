@@ -1,0 +1,202 @@
+.royal-coins {
+  display: flex;
+  flex-direction: column;
+}
+
+.royal-coins-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: linear-gradient(to bottom, #8000ff 0%, #9e00ff 50%, #61009c 100%);
+  width: 100vw;
+  height: 54px;
+  border-bottom: 2px solid #913bff;
+}
+
+.heading-stars {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #370063;
+  border-radius: 19px;
+  height: 36px;
+  width: 240px;
+  border-bottom: 1px solid #ffb800;
+  box-shadow: inset 0 3px 4px #00000077;
+}
+
+.star-img {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  left: -36px;
+  top: -1px;
+}
+
+.score-stars--count {
+  letter-spacing: 2px;
+  font-size: 22px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, var(--upper-violet-gradient-color), var(--bottom-violet-gradient-color));
+}
+
+.score-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #370063;
+  border-radius: 19px;
+  height: 36px;
+  width: 240px;
+  border-bottom: 1px solid #ffb800;
+  box-shadow: inset 0 3px 4px #00000077;
+}
+
+.coins-img {
+  width: 39px;
+  height: 27px;
+  position: relative;
+  left: -25px;
+  top: 2px;
+}
+
+.score-coins--count {
+  letter-spacing: 2px;
+  font-size: 22px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, var(--upper-gold-gradient-color), var(--bottom-gold-gradient-color));
+}
+
+.game-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100vw;
+}
+
+.game-btn {
+  border-radius: 50%;
+  color: #fff;
+  background: radial-gradient(circle, #ff00e5 0%, #9501ff 100%);
+  box-shadow: inset 0 4px 5px #f1caffaa, 0 6px 6px #5c0fff88;
+  border: 0.5px solid #ffffffaa;
+  width: 40px;
+  height: 40px;
+}
+
+.game-btn img {
+  width: 14px;
+  height: 20px;
+  margin-top: 8px;
+}
+
+.game-btn-placeholder {
+  width: 40px;
+  height: 40px;
+}
+
+.royal-coins-bottom {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: linear-gradient(to bottom, #8000ff 0%, #9e00ff 50%, #61009c 100%);
+  width: 100vw;
+  height: 54px;
+  border-bottom: 2px solid #913bff;
+}
+
+.bet-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.bet-field {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 13px;
+  background-color: #320950;
+  width: 86px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+.bet-field span {
+  letter-spacing: 2px;
+  font-size: 22px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, var(--upper-gold-gradient-color), var(--bottom-gold-gradient-color));
+  text-shadow: 0px 2px 8px gold;
+}
+
+.win-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #320950;
+  width: 190px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+.win-container span {
+  letter-spacing: 2px;
+  font-size: 22px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, var(--upper-gold-gradient-color), var(--bottom-gold-gradient-color));
+  text-shadow: 0px 2px 8px gold;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.auto-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 45px;
+  border: 1px solid #00a3ff;
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom, #bd00ff, #005484);
+  box-shadow: inset 0 4px 4px #fff7cf77, inset 0 -4px 4px #00a3ff77, 0 4px 3px #24ff0044;
+  transition: 0.2s;
+  margin: 0 5px;
+}
+
+.spin-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 45px;
+  border: 1px solid gold;
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom, #70ff00, #008405);
+  box-shadow: inset 0 4px 4px #fff7cf77, inset 0 -4px 4px #00a3ff77, 0 4px 3px #24ff0044;
+  transition: 0.2s;
+  margin: 0 5px;
+}
