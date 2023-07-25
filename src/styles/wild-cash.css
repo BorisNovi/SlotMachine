@@ -1,22 +1,22 @@
-.royal-coins {
+.wild-cash {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.royal-coins-bg-img {
+.wild-cash-bg-img {
   min-height: 100%;
   min-width: 640px;
   width: 100%;
   height: auto;
   position: fixed;
-  top: 0;
+  top: 2px;
   left: 0;
   z-index: -1;
 }
 
-.royal-coins-heading {
+.wild-cash-heading {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -25,6 +25,7 @@
   width: 100vw;
   height: 54px;
   border-bottom: 2px solid #913bff;
+  z-index: 1;
 }
 
 .heading-stars {
@@ -108,7 +109,7 @@
   height: 40px;
 }
 
-.royal-coins-bottom {
+.wild-cash-bottom {
   position: absolute;
   bottom: 0;
   display: flex;
@@ -205,7 +206,7 @@
   margin: 0 5px;
 }
 
-.game-content {
+.wild-cash-game-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -213,31 +214,32 @@
   height: 70vh;
 }
 
-.game-drum {
+.wild-cash-game-drum {
   overflow: hidden;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  width: 412px;
-  height: 240px;
-  border: 2px solid gold;
+  width: 470px;
+  height: 244px;
   border-radius: 20px;
-  background-color: #15091faa;
 }
 
-.game-drum-wheel {
-  transform: translateY(10px);
+.wild-cash-game-drum-wheel {
+  transform: translateY(-50px);
 }
 
-.wheel-img-container {
- border: .5px solid #fff;
+.wild-cash-game-drum-wheel-wrapper {
+  overflow: hidden;
+  width: 86px;
+  height: 244px;
+  border-radius: 14px;
+  border: 1px solid #ffffff44;
+}
+.wild-cash-wheel-img-container {
+  border: .5px solid #000;
 }
 
-.wheel-img-container img {
-  width: 105px;
-  height: 65px;
-}
-
-@media (hover :hover) {
-
+.wild-cash-wheel-img-container img {
+  width: 82px;
+  height: 72px;
 }

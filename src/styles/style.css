@@ -2,6 +2,7 @@
 @import "impact-font.css";
 @import "lobby.css";
 @import "royal-coins.css";
+@import "wild-cash.css";
 
 :root {
   --upper-gold-gradient-color: #ebff00;
@@ -80,12 +81,21 @@ padding: 5px 0px;
   margin: 0 1em;
 }
 
-.privacy-accept-btn:active {
+.privacy-accept-btn:active,
+.game-btn:active,
+.auto-btn:active,
+.spin-btn:active {
   transform: scale(0.97);
 }
 
 @media (hover: hover) {
   .privacy-accept-btn:hover {
     background-image: linear-gradient(to bottom, #9b00d4, #00436a);
+  }
+
+  .game-btn:hover,
+  .auto-btn:hover,
+  .spin-btn:hover {
+    box-shadow: inset 0 2px 2px #fff7cf33, inset 0 -2px 2px #00a3ff33, 0 2px 2px #000;
   }
 }
