@@ -49,6 +49,7 @@
 }
 
 .score-stars--count {
+  width: 130px;
   letter-spacing: 2px;
   font-size: 22px;
   background-clip: text;
@@ -79,6 +80,7 @@
 }
 
 .score-coins--count {
+  width: 130px;
   letter-spacing: 2px;
   font-size: 22px;
   background-clip: text;
@@ -161,6 +163,8 @@
 }
 
 .win-container span {
+  display: block;
+  width: 110px;
   letter-spacing: 2px;
   font-size: 22px;
   background-clip: text;
@@ -228,10 +232,11 @@
 
 .game-drum-wheel {
   /* transform: translateY(10px); */
+  /* transition: 0.5s; */
 }
 
 .wheel-img-container {
- border: .5px solid #fff;
+ border: .5px solid transparent;
  /* height: 68px; */
 }
 
