@@ -3,9 +3,10 @@ export class RoyalCoinsMachine {
     this.drum = document.querySelector('.game-drum');
     this.wheels = document.querySelectorAll('.game-drum-wheel');
     this.autoBtn = document.querySelector('.auto-royal-coins');
+    this.autoState = false;
     this.spinBtn = document.querySelector('.spin-royal-coins');
 
-    this.chanceRange = 9; // Диапазон генератора рандома 19 - 99
+    this.chanceRange = 29; // Диапазон генератора рандома 19 - 99
 
     this.balance = localStorage.getItem('balance') ? Number(localStorage.getItem('balance')) : 1000000;
     this.starsHave = localStorage.getItem('starsHave') ? Number(localStorage.getItem('starsHave')) : 0;
@@ -80,7 +81,6 @@ export class RoyalCoinsMachine {
     return tick;
   }
 
-
   async gameLogic() {
     const randomNumber = () => Math.floor(Math.random() * (this.chanceRange - 9 + 1)) + 9;
 
@@ -111,10 +111,56 @@ export class RoyalCoinsMachine {
 
     // Ждем, когда промис выполнится (после истечения таймера)
     const result = await promise;
-    console.log(this.bet);
+
     return result; // Возвращаем winCombo
   }
 
+  async autoGame() {
+    while (this.autoState) {
+      const win = await this.gameLogic();
+      this.checkWin(win);
+      console.log('autoState: ', this.autoState);
+    }
+  }
+
+  checkWin(success) {
+    if (success) {
+      this.prizeField.innerHTML = this.bet;
+
+      this.balance += this.bet;
+      this.coinsField.forEach(el => el.innerHTML = this.balance);
+      this.starsHave += 100;
+      this.starsHaveField.forEach((el) => el.innerHTML = this.starsHave);
+
+      localStorage.setItem('starsHave', this.starsHave);
+
+      if (this.starsHave > 9000) {
+        this.starsHave = 9000;
+        this.starsHaveField.forEach((el) => el.innerHTML = this.starsHave);
+
+        localStorage.setItem('starsHave', this.starsHave);
+      }
+
+      localStorage.setItem('balance', this.balance);
+      console.log('you win');
+    } else {
+      this.prizeField.innerHTML = 0;
+
+      this.balance -= this.bet;
+      this.coinsField.forEach(el => el.innerHTML = this.balance);
+
+      localStorage.setItem('balance', this.balance);
+      console.log('you lose');
+
+      if (this.balance <= 0) {
+        this.balance = 0;
+        this.coinsField.forEach(el => el.innerHTML = this.balance);
+
+        localStorage.setItem('balance', this.balance);
+        console.log('total lose');
+      }
+    }
+  }
 
   activeRoyalCoins() {
     // Читаем локальное хранилище
@@ -125,42 +171,7 @@ export class RoyalCoinsMachine {
     this.spinBtn.addEventListener('click', async () => {
       await this.gameLogic()
         .then((win) => {
-          if (win) {
-            this.prizeField.innerHTML = this.bet;
-
-            this.balance += this.bet;
-            this.coinsField.forEach(el => el.innerHTML = this.balance);
-            this.starsHave += 100;
-            this.starsHaveField.forEach((el) => el.innerHTML = this.starsHave);
-
-            localStorage.setItem('starsHave', this.starsHave);
-
-            if (this.starsHave > 9000) {
-              this.starsHave = 9000;
-              this.starsHaveField.forEach((el) => el.innerHTML = this.starsHave);
-
-              localStorage.setItem('starsHave', this.starsHave);
-            }
-
-            localStorage.setItem('balance', this.balance);
-            console.log('you win');
-          } else {
-            this.prizeField.innerHTML = 0;
-
-            this.balance -= this.bet;
-            this.coinsField.forEach(el => el.innerHTML = this.balance);
-
-            localStorage.setItem('balance', this.balance);
-            console.log('you lose');
-
-            if (this.balance <= 0) {
-              this.balance = 0;
-              this.coinsField.forEach(el => el.innerHTML = this.balance);
-
-              localStorage.setItem('balance', this.balance);
-              console.log('total lose');
-            }
-          }
+          this.checkWin(win);
         });
 
     });
@@ -182,7 +193,12 @@ export class RoyalCoinsMachine {
     });
 
     this.autoBtn.addEventListener('click', () => {
+      this.autoState = !this.autoState; // То же самое, что и this.autoState === false ? true : false;
 
+      if (this.autoState) {
+        this.autoGame();
+      }
     });
   }
+
 }
