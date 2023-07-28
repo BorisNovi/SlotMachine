@@ -222,7 +222,7 @@
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  padding-top: 10px;
+  padding-top: 3px;
   width: 412px;
   height: 240px;
   border: 2px solid gold;
@@ -236,8 +236,10 @@
 }
 
 .wheel-img-container {
- border: .5px solid transparent;
- /* height: 68px; */
+  display: flex;
+  align-items: center;
+  border: .5px solid transparent;
+  height: 75px;
 }
 
 .wheel-img-container img {
@@ -245,6 +247,9 @@
   height: 65px;
 }
 
-@media (hover :hover) {
-
+.highlight {
+  background-color: #ffffff55;
+  box-shadow: 0 0 7px 7px #ffffff55;
 }
+
+@media (hover :hover) {}

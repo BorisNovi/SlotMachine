@@ -6,7 +6,7 @@ export class RoyalCoinsMachine {
     this.autoState = false;
     this.spinBtn = document.querySelector('.spin-royal-coins');
 
-    this.chanceRange = 29; // Диапазон генератора рандома 19 - 99
+    this.chanceRange = 19; // Диапазон генератора рандома 19 - 99
 
     this.balance = localStorage.getItem('balance') ? Number(localStorage.getItem('balance')) : 1000000;
     this.starsHave = localStorage.getItem('starsHave') ? Number(localStorage.getItem('starsHave')) : 0;
@@ -104,7 +104,10 @@ export class RoyalCoinsMachine {
         const centralValue2 = drum2.children[0].classList[0];
         const centralValue3 = drum3.children[0].classList[0];
 
-        winCombo = centralValue1 === centralValue2 && centralValue2 === centralValue3;
+        centralValue1 === centralValue2 && centralValue2 === centralValue3 ? winCombo = 1 :
+        centralValue1 === centralValue2 ? winCombo = 2 :
+        centralValue2 === centralValue3 ? winCombo = 3 : winCombo = null;
+
         resolve(winCombo); // Возвращаем winCombo через resolve
       }, totalTime * 100);
     });
@@ -117,17 +120,51 @@ export class RoyalCoinsMachine {
 
   async autoGame() {
     while (this.autoState) {
-      const win = await this.gameLogic();
-      this.checkWin(win);
+      await this.gameLogic()
+      .then((win) => this.checkWin(win))
+      .then(() => setTimeout(() => (this.highlightCombo(false)), 500));
+      // Отключаем подсветку победы через .5s
       console.log('autoState: ', this.autoState);
     }
   }
 
-  checkWin(success) {
-    if (success) {
-      this.prizeField.innerHTML = this.bet;
+  highlightCombo(bool, combo) {
+    if (bool) {
+      switch (combo) {
+        case 1: {
+          document.querySelectorAll('.drum1-rc-item')[8].classList.add('highlight');
+          document.querySelectorAll('.drum2-rc-item')[8].classList.add('highlight');
+          document.querySelectorAll('.drum3-rc-item')[8].classList.add('highlight');
+          break;
+        }
+        case 2: {
+          document.querySelectorAll('.drum1-rc-item')[8].classList.add('highlight');
+          document.querySelectorAll('.drum2-rc-item')[8].classList.add('highlight');
+          break;
+        }
+        case 3: {
+          document.querySelectorAll('.drum2-rc-item')[8].classList.add('highlight');
+          document.querySelectorAll('.drum3-rc-item')[8].classList.add('highlight');
+          break;
+        }
+      }
+    } else {
+      document.querySelectorAll('.wheel-img-container')
+      .forEach(el => el.classList.remove('highlight'));
+    }
 
-      this.balance += this.bet;
+  }
+
+  checkWin(success) {
+    console.log('win combo: ', success);
+
+    if (success) {
+      this.highlightCombo(true, success); // Если победа, подсвечиваем комбо
+
+      const calcWin = this.bet / (success > 1 ? 2 : 1); // Комбо неполное? - делим ставку пополам
+      this.prizeField.innerHTML = calcWin;
+
+      this.balance += calcWin;
       this.coinsField.forEach(el => el.innerHTML = this.balance);
       this.starsHave += 100;
       this.starsHaveField.forEach((el) => el.innerHTML = this.starsHave);
@@ -169,6 +206,7 @@ export class RoyalCoinsMachine {
     this.starsMaxField.forEach(el => el.innerHTML = this.starsMax);
 
     this.spinBtn.addEventListener('click', async () => {
+      this.highlightCombo(false); // Выключаем подсветку победы
       await this.gameLogic()
         .then((win) => {
           this.checkWin(win);
